@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sha.mapper.OptionsFullMapper">
+    <select id="selectById" resultType="com.sha.entity.OptionsFull">
+        select *from votefull where id = #{id}
+    </select>
+    <insert id="insertVote" parameterType="com.sha.entity.OptionsFull">
+        insert into votefull (id,poll) value (#{id},#{poll})
+    </insert>
+    <update id="updateVote" parameterType="com.sha.entity.OptionsFull">
+        update votefull set poll=#{poll} where id = #{id}
+    </update>
+</mapper>
