@@ -14,11 +14,19 @@
 <body>
 <h1 class="text-center">最佳服装评选</h1>
 <div class="container my-center">
-    <p>下面请选出你觉得好看的服装（可多选）</p>
+    <p>下面请选出你觉得最真实的图片</p>
     <form th:if="${session.user != null}" th:action="'/vote/' + ${session.user.id}" method="post">
         <div th:each="option:${options}">
-            <input type="checkbox" name="optionIds" th:value="${option.id}">[[${option.optionValue}]]<br>
-            <img th:src="${option.getSrc()}"/>
+            <h1 th:text="${options.indexOf(option)}+1"></h1>
+            <label>
+                <img th:src="@{imgs/try-on-full/b}+${option}+'.png'"/>
+                <input type="checkbox" name="optionIdsFull" th:value="${option}" style="width: 20px; height: 20px"><br>
+            </label>
+            <label>
+                <img th:src="@{imgs/try-on-origin/a}+${option}+'.png'"/>
+                <input type="checkbox" name="optionIdsOrigin" th:value="${option}" style="width: 20px; height: 20px"><br>
+            </label>
+
         </div>
         <br>
         <button type="submit" class="btn btn-primary">提交</button>

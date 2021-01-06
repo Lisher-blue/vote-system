@@ -16,26 +16,6 @@
 
 <div class="container my-center">
     <h1 class="text-center">您已投票</h1>
-    <p>投票结果</p>
-    <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
-            <tr>
-                <th>编号</th>
-                <th>姓名</th>
-                <th>票数</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="option:${options.keySet()}">
-                <td th:text="${option.getId()}"></td>
-                <td th:text="${option.optionValue}"></td>
-                <td th:text="${options.get(option)}"></td>
-            </tr>
-            </tbody>
-
-        </table>
-    </div>
 </div>
 </body>
 </html>

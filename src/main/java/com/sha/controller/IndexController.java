@@ -1,26 +1,30 @@
 package com.sha.controller;
 
-import com.sha.entity.Options;
-import com.sha.mapper.OptionsMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Lisher
  */
 @Controller
 public class IndexController {
-    @Autowired
-    private OptionsMapper optionsMapper;
 
     @GetMapping("index")
     public String index(Model model) {
-        List<Options> allOptions = optionsMapper.findAllOptions();
-        model.addAttribute("options",allOptions);
+        List<Integer> list = randoms(2182, 50);
+        model.addAttribute("options", list);
         return "index";
+    }
+
+
+    public List<Integer> randoms(int total, int count) {
+        Random random = new Random();
+        Set<Integer> set = new HashSet<>();
+        while (set.size() < count) {
+            set.add(random.nextInt(total));
+        }
+        return new ArrayList<>(set);
     }
 }
